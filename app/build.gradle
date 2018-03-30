@@ -41,11 +41,10 @@ dependencies {
 
     // Displaying images
     compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile "com.google.firebase:firebase-database:$firebase_lib_version"
-    compile "com.google.firebase:firebase-auth:$firebase_lib_version"
-    compile "com.google.firebase:firebase-storage:$firebase_lib_version"
-    compile "com.google.firebase:firebase-messaging:$firebase_lib_version"
-    compile "com.google.firebase:firebase-config:$firebase_lib_version"
+    compile 'com.google.firebase:firebase-database:11.8.0'
+    compile 'com.google.firebase:firebase-auth:11.8.0'
+    compile 'com.google.firebase:firebase-storage:11.8.0'
+    compile 'com.google.firebase:firebase-messaging:11.8.0'
     compile 'com.firebaseui:firebase-ui-auth:3.2.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
