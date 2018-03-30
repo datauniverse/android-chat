@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # FriendlyChat
 
 This repository contains code for the FriendlyChat project in the [Firebase in a Weekend: Android by Google](https://www.udacity.com/course/firebase-in-a-weekend-by-google-android--ud0352) Udacity course.
@@ -13,6 +12,3 @@ Setup requires creating a Firebase project. See https://firebase.google.com/ for
 
 ## License
 See [LICENSE](LICENSE)
-=======
-# android-chat
->>>>>>> a5cb295b92dfe69c7ada992eb6cc340f6b88869f
