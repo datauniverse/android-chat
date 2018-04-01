@@ -43,7 +43,7 @@ class ChatsTabFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_chats, container, false)
         // rootView.section_label.text = getString(R.string.section_format, arguments?.getInt(ARG_SECTION_NUMBER))
-        mUsername = MainActivity.ANONYMOUS
+        mUsername = ANONYMOUS
 
         mFirebaseDatabase = FirebaseDatabase.getInstance()
         mFirebaseAuth = FirebaseAuth.getInstance()
@@ -72,7 +72,7 @@ class ChatsTabFragment : Fragment() {
             intent.type = "image/jpeg"
             intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
             startActivityForResult(Intent.createChooser(intent, "Complete action using"),
-                    ChatsTab.RC_PHOTO_PICKER)
+                    ChatsTabFragment.RC_PHOTO_PICKER)
         }
 
         // Enable Send button when there's text to send
@@ -89,7 +89,7 @@ class ChatsTabFragment : Fragment() {
 
             override fun afterTextChanged(editable: Editable) {}
         })
-        mMessageEditText!!.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(MainActivity.DEFAULT_MSG_LENGTH_LIMIT))
+        mMessageEditText!!.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT))
 
         // Send button sends a message and clears the EditText
         mSendButton!!.setOnClickListener {
@@ -116,7 +116,7 @@ class ChatsTabFragment : Fragment() {
                                         AuthUI.IdpConfig.GoogleBuilder().build()
                                 ))
                                 .build(),
-                        ChatsTab.RC_SIGN_IN)
+                        ChatsTabFragment.RC_SIGN_IN)
             }
         }
         /* TODO: Add Implementation of Firebase Remote Config once you figure out what's wrong
@@ -140,7 +140,7 @@ class ChatsTabFragment : Fragment() {
     }
 
     private fun onSignedOutCleanup() {
-        mUsername = MainActivity.ANONYMOUS
+        mUsername = ANONYMOUS
         mMessageAdapter!!.clear()
         detachDatabaseReadListener()
     }
@@ -173,7 +173,7 @@ class ChatsTabFragment : Fragment() {
     }
 
     companion object {
-        val TAG = "MainActivity"
+        val TAG = "ChatsTabFragment"
         val ANONYMOUS = "anonymous"
         val DEFAULT_MSG_LENGTH_LIMIT = 1000
         val FRIENDLY_MSG_LENGTH_KEY = "friendly_msg_length"
