@@ -1,4 +1,4 @@
-package com.ab.android.app
+package com.ab.android.app.adapters
 
 import android.app.Activity
 import android.content.Context
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.ab.android.app.R
+import com.ab.android.app.models.FriendlyMessage
 
 import com.bumptech.glide.Glide
 

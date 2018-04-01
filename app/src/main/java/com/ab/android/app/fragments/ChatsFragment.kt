@@ -1,4 +1,4 @@
-package com.ab.android.app
+package com.ab.android.app.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.ab.android.app.models.FriendlyMessage
+import com.ab.android.app.adapters.MessageAdapter
+import com.ab.android.app.R
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -20,7 +23,7 @@ import java.util.*
 /**
  * A placeholder fragment containing a simple view.
  */
-class ChatsTabFragment : Fragment() {
+class ChatsFragment : Fragment() {
     private var mMessageListView: ListView? = null
     private var mMessageAdapter: MessageAdapter? = null
     private var mProgressBar: ProgressBar? = null
@@ -72,7 +75,7 @@ class ChatsTabFragment : Fragment() {
             intent.type = "image/jpeg"
             intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
             startActivityForResult(Intent.createChooser(intent, "Complete action using"),
-                    ChatsTabFragment.RC_PHOTO_PICKER)
+                    RC_PHOTO_PICKER)
         }
 
         // Enable Send button when there's text to send
@@ -116,7 +119,7 @@ class ChatsTabFragment : Fragment() {
                                         AuthUI.IdpConfig.GoogleBuilder().build()
                                 ))
                                 .build(),
-                        ChatsTabFragment.RC_SIGN_IN)
+                        RC_SIGN_IN)
             }
         }
         /* TODO: Add Implementation of Firebase Remote Config once you figure out what's wrong
@@ -129,7 +132,6 @@ class ChatsTabFragment : Fragment() {
         defaultConfigMap.put(FRIENDLY_MSG_LENGTH_KEY, DEFAULT_MSG_LENGTH_LIMIT);
         mFirebaseRemoteConfig.setDefaults(defaultConfigMap);
         */
-
 
         return rootView
     }
@@ -173,7 +175,7 @@ class ChatsTabFragment : Fragment() {
     }
 
     companion object {
-        val TAG = "ChatsTabFragment"
+        val TAG = "ChatsFragment"
         val ANONYMOUS = "anonymous"
         val DEFAULT_MSG_LENGTH_LIMIT = 1000
         val FRIENDLY_MSG_LENGTH_KEY = "friendly_msg_length"
@@ -190,8 +192,8 @@ class ChatsTabFragment : Fragment() {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        fun newInstance(sectionNumber: Int): ChatsTabFragment {
-            val fragment = ChatsTabFragment()
+        fun newInstance(sectionNumber: Int): ChatsFragment {
+            val fragment = ChatsFragment()
             val args = Bundle()
             args.putInt(ARG_SECTION_NUMBER, sectionNumber)
             fragment.arguments = args

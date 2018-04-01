@@ -1,4 +1,4 @@
-package com.ab.android.app
+package com.ab.android.app.models
 
 class FriendlyMessage {
 

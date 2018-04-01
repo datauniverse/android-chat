@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ab.android.app.ChatsTabFragment">
+    tools:context="com.ab.android.app.fragments.ChatsFragment">
 
     <ListView
         android:id="@+id/messageListView"

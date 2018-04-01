@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.ab.android.app.fragments.ChatsFragment
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -76,8 +77,7 @@ class MainActivity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return ChatsTabFragment.newInstance(position + 1)
-            // return ChatsTab()
+            return ChatsFragment.newInstance(position + 1)
         }
 
         override fun getCount(): Int {
