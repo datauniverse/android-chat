@@ -1,5 +1,6 @@
 package com.ab.android.app
 
+import android.support.design.widget.TabLayout
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 
@@ -7,17 +8,12 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 
-import kotlinx.android.synthetic.main.activity_main2.*
-import kotlinx.android.synthetic.main.fragment_contacts.view.*
+import kotlinx.android.synthetic.main.activity_main3.*
 
-class Main2Activity : AppCompatActivity() {
+class Main3Activity : AppCompatActivity() {
 
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
@@ -31,7 +27,7 @@ class Main2Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.activity_main3)
 
         setSupportActionBar(toolbar)
         // Create the adapter that will return a fragment for each of the three
@@ -41,6 +37,9 @@ class Main2Activity : AppCompatActivity() {
         // Set up the ViewPager with the sections adapter.
         container.adapter = mSectionsPagerAdapter
 
+        container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
+        tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
+
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
@@ -48,10 +47,9 @@ class Main2Activity : AppCompatActivity() {
 
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main2, menu)
+        menuInflater.inflate(R.menu.menu_main3, menu)
         return true
     }
 
@@ -76,26 +74,15 @@ class Main2Activity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
-            return when (position) {
-                0 -> ContactsTab()
-                1 -> ChatsTab()
-                2 -> StatusTab()
-                else -> null!!
-            }
+            // getItem is called to instantiate the fragment for the given page.
+            // Return a PlaceholderFragment (defined as a static inner class below).
+            return ChatsTabFragment.newInstance(position + 1)
+            // return ChatsTab()
         }
 
         override fun getCount(): Int {
             // Show 3 total pages.
             return 3
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return when (position) {
-                0 -> "Contacts"
-                1 -> "Chats"
-                2 -> "Status"
-                else -> null!!
-            }
         }
     }
 }

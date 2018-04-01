@@ -16,22 +16,11 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.*
-import kotlinx.android.synthetic.main.fragment_chats.*
 
 /**
- * Created by abhil on 31-03-2018.
+ * A placeholder fragment containing a simple view.
  */
-class ChatsTab : Fragment() {
-
-    companion object {
-        private val TAG = "MainActivity"
-        val ANONYMOUS = "anonymous"
-        val DEFAULT_MSG_LENGTH_LIMIT = 1000
-        val FRIENDLY_MSG_LENGTH_KEY = "friendly_msg_length"
-        val RC_SIGN_IN = 1
-        val RC_PHOTO_PICKER = 2
-    }
-
+class ChatsTabFragment : Fragment() {
     private var mMessageListView: ListView? = null
     private var mMessageAdapter: MessageAdapter? = null
     private var mProgressBar: ProgressBar? = null
@@ -53,7 +42,7 @@ class ChatsTab : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_chats, container, false)
-
+        // rootView.section_label.text = getString(R.string.section_format, arguments?.getInt(ARG_SECTION_NUMBER))
         mUsername = MainActivity.ANONYMOUS
 
         mFirebaseDatabase = FirebaseDatabase.getInstance()
@@ -141,6 +130,7 @@ class ChatsTab : Fragment() {
         mFirebaseRemoteConfig.setDefaults(defaultConfigMap);
         */
 
+
         return rootView
     }
 
@@ -179,6 +169,33 @@ class ChatsTab : Fragment() {
         if (mChildEventListener != null) {
             mMessagesDatabaseReference!!.removeEventListener(mChildEventListener!!)
             mChildEventListener = null
+        }
+    }
+
+    companion object {
+        val TAG = "MainActivity"
+        val ANONYMOUS = "anonymous"
+        val DEFAULT_MSG_LENGTH_LIMIT = 1000
+        val FRIENDLY_MSG_LENGTH_KEY = "friendly_msg_length"
+        val RC_SIGN_IN = 1
+        val RC_PHOTO_PICKER = 2
+
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private val ARG_SECTION_NUMBER = "section_number"
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        fun newInstance(sectionNumber: Int): ChatsTabFragment {
+            val fragment = ChatsTabFragment()
+            val args = Bundle()
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber)
+            fragment.arguments = args
+            return fragment
         }
     }
 }
