@@ -1,5 +1,7 @@
 package com.ab.android.app
 
+import android.content.pm.PackageManager
+import android.os.Build
 import android.support.design.widget.TabLayout
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -13,6 +15,7 @@ import android.view.MenuItem
 import android.widget.ListView
 import com.ab.android.app.adapters.CustomListViewAdapter
 import com.ab.android.app.fragments.ChatsFragment
+import com.ab.android.app.fragments.ConFragment
 import com.ab.android.app.fragments.ContactsFragment
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,6 +31,8 @@ class MainActivity : AppCompatActivity() {
      * [android.support.v4.app.FragmentStatePagerAdapter].
      */
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
+
+    private val PERMISSION_REQUEST_READ_CONTACTS = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +52,12 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                checkSelfPermission(android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(android.Manifest.permission.READ_CONTACTS),
+                    PERMISSION_REQUEST_READ_CONTACTS)
         }
     }
 
@@ -81,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             // Return a PlaceholderFragment (defined as a static inner class below).
 
             when (position) {
-                0 -> return ContactsFragment()
+                0 -> return ConFragment()
                 else -> return ChatsFragment.newInstance(position + 1)
             }
         }

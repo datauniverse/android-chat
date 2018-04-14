@@ -2,14 +2,10 @@ package com.ab.android.app.fragments
 
 import android.support.v4.app.Fragment
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
 import com.ab.android.app.R
 import com.ab.android.app.adapters.CustomListViewAdapter
 
@@ -18,8 +14,8 @@ import com.ab.android.app.adapters.CustomListViewAdapter
  */
 class ContactsFragment : Fragment() {
 
-    var listView: ListView? = null
-    var customListViewAdapter: CustomListViewAdapter? = null
+    private var listView: ListView? = null
+    private var customListViewAdapter: CustomListViewAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
