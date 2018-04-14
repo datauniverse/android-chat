@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ListView
+import com.ab.android.app.adapters.CustomListViewAdapter
 import com.ab.android.app.fragments.ChatsFragment
 import com.ab.android.app.fragments.ContactsFragment
 
@@ -46,7 +48,6 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
